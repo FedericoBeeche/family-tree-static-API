@@ -32,10 +32,12 @@ def sitemap():
 
 @app.route('/all', methods=['GET'])
 def getAllPeople():
-    # esto puede hacerse aqui tambien
-    # all_users = Person.query.order_by(Person.age.desc()).all() 
-    # all_users = list(map(lambda x: x.serialize(), all_users))
     return jsonify(Person.getAllPeople()), 200
+
+@app.route('/person/<int:id>', methods=['GET'])
+def getSinglePerson(id):
+    person = Person.query.get(id)
+    return jsonify(person.serialize()), 200
 
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':

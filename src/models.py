@@ -15,7 +15,8 @@ class Person(db.Model):
         return {
             "name": self.name,
             "lastname": self.lastname,
-            "age": self.age
+            "age": self.age,
+            "id": self.id
         }
 
     def getAllPeople():
